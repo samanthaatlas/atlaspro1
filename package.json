@@ -1,6 +1,6 @@
 {
   "name": "atlas",
-  "version": "1.7.4",
+  "version": "1.0.0",
   "scripts": {
     "dev:next": "next dev",
     "dev": "next dev",
