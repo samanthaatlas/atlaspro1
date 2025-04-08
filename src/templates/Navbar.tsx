@@ -1,110 +1,76 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
-import { buttonVariants } from '@/components/ui/button';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
-import { ToggleMenuButton } from '@/components/ToggleMenuButton';
-import { useMenu } from '@/hooks/UseMenu';
+import { buttonVariants } from '@/components/ui/buttonVariants';
 import { cn } from '@/utils/Helpers';
-import { Logo } from '@/templates/Logo';
-import { FeaturesMenu } from '@/features/landing/FeaturesMenu';
+import { useMenu } from '@/hooks/UseMenu';
 
 const navItems = [
   {
+    href: '/features',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-5">
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
       </svg>
     ),
-    href: '/'
   },
   {
+    href: '/analytics',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-        <rect width="7" height="7" x="3" y="3" rx="1" />
-        <rect width="7" height="7" x="14" y="3" rx="1" />
-        <rect width="7" height="7" x="14" y="14" rx="1" />
-        <rect width="7" height="7" x="3" y="14" rx="1" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-5">
+        <path d="M3 3v18h18" />
+        <path d="m19 9-5 5-4-4-3 3" />
       </svg>
     ),
-    href: '/features'
   },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-        <path d="M12 2a10 10 0 1 0 10 10H12V2Z" />
-        <path d="M21 12a9 9 0 1 1-9-9" />
-        <path d="M12 2a9 9 0 0 1 9 9" />
-      </svg>
-    ),
-    href: '/analytics'
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-        <polyline points="14 2 14 8 20 8" />
-      </svg>
-    ),
-    href: '/docs'
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    href: '/team'
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-      </svg>
-    ),
-    href: '/notifications'
-  }
 ];
 
 export const Navbar = () => {
   const t = useTranslations('Navbar');
   const { showMenu, handleToggleMenu } = useMenu();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const isCollapsed = false;
 
   return (
     <>
       {/* Mobile menu button */}
-      <div className="fixed left-4 top-4 z-50 lg:hidden">
-        <ToggleMenuButton onClick={handleToggleMenu} />
-      </div>
-
-      {/* Side Navigation */}
-      <nav className={cn(
-        "fixed right-0 top-0 z-40 flex h-screen flex-col items-center border-l border-border/40 bg-black p-4 transition-all duration-300",
-        isCollapsed ? "w-[48px]" : "w-[72px]"
-      )}>
-        {/* Toggle button */}
-        <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="mb-8 flex h-10 w-10 items-center justify-center rounded-lg text-primary transition-colors hover:bg-primary/10"
-          aria-label={isCollapsed ? "Expand menu" : "Collapse menu"}
-        >
+      <button
+        type="button"
+        onClick={handleToggleMenu}
+        className="fixed right-4 top-4 z-40 rounded-lg p-2 text-primary hover:bg-primary/10 lg:hidden"
+      >
+        {showMenu ? (
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
-            {isCollapsed ? (
-              <path d="m9 18 6-6-6-6" />
-            ) : (
-              <path d="m15 18-6-6 6-6" />
-            )}
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
           </svg>
-        </button>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-6">
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        )}
+      </button>
+
+      {/* Side navigation */}
+      <nav
+        className={cn(
+          "fixed left-0 top-0 z-30 flex h-full w-[4.5rem] flex-col border-r bg-background p-3 transition-transform lg:translate-x-0",
+          showMenu ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
+        {/* Logo */}
+        <Link href="/" className="mb-8 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-8 text-primary">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            <polyline points="3.29 7 12 12 20.71 7" />
+            <line x1="12" y1="22" x2="12" y2="12" />
+          </svg>
+        </Link>
 
         <div className="flex h-full flex-col items-center justify-between gap-8">
           {/* Navigation Links */}
@@ -127,22 +93,6 @@ export const Navbar = () => {
           {/* Bottom Section */}
           <div className="flex flex-col gap-4">
             <LocaleSwitcher />
-            <Link
-              href="/sign-up"
-              className={buttonVariants({
-                variant: 'default',
-                size: 'icon',
-                className: cn(
-                  'bg-primary hover:bg-primary/90',
-                  isCollapsed ? 'h-8 w-8' : 'h-10 w-10'
-                ),
-              })}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={cn("transition-all", isCollapsed ? "size-4" : "size-5")}>
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </Link>
           </div>
         </div>
       </nav>

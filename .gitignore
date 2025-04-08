@@ -54,3 +54,7 @@ local
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+CLERK_SECRET_KEY=<your actual Clerk secret key>
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_b3Blbi1zdGlua2J1Zy04LmNsZXJrLmFjY291bnRzLmRldiQ
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in

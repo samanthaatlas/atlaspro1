@@ -15,7 +15,7 @@ export const CTA = () => {
         buttons={(
           <a
             className={buttonVariants({ size: 'lg', className: "bg-primary hover:bg-primary-dark text-primary-foreground" })}
-            href="/sign-up"
+            href="#contact"
           >
             {t('button_text')}
           </a>
