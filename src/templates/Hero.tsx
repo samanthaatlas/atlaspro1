@@ -1,8 +1,4 @@
-import { useTranslations } from 'next-intl';
-
 import { buttonVariants } from '@/components/ui/buttonVariants';
-import { CenteredHero } from '@/features/landing/CenteredHero';
-import { Section } from '@/features/landing/Section';
 
 export default function Hero() {
   return (
