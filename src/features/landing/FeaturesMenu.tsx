@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 
 const features = [
   {
@@ -120,8 +119,6 @@ const features = [
 ];
 
 export const FeaturesMenu = () => {
-  const t = useTranslations('Features');
-
   return (
     <div className="grid grid-cols-1 gap-4 p-4">
       <h2 className="text-2xl font-bold text-white mb-6">Key Features</h2>
