@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/samanthaatlas/atlaspro1/compare/v1.0.0...v1.0.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* remove unused NextResponse import from middleware ([79ff8ef](https://github.com/samanthaatlas/atlaspro1/commit/79ff8ef4909374dff41ab730e6035ed0a3186dc6))
+
 # 1.0.0 (2025-04-08)
 
 
