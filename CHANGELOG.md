@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/samanthaatlas/atlaspro1/compare/v1.0.1...v1.1.0) (2025-04-08)
+
+
+### Features
+
+* add 'use client' directive to IndexPage component ([2b4f914](https://github.com/samanthaatlas/atlaspro1/commit/2b4f9146b1907c971e5d1ebe2e253f8e8e8aa642))
+
 ## [1.0.1](https://github.com/samanthaatlas/atlaspro1/compare/v1.0.0...v1.0.1) (2025-04-08)
 
 
