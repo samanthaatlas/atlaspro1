@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/samanthaatlas/atlaspro1/compare/v1.1.0...v1.1.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* remove unused imports from Hero component ([d30f233](https://github.com/samanthaatlas/atlaspro1/commit/d30f23387261807d461d31b427a800cc180eb386))
+
 # [1.1.0](https://github.com/samanthaatlas/atlaspro1/compare/v1.0.1...v1.1.0) (2025-04-08)
 
 
