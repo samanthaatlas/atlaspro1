@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 
 import { AllLocales, AppConfig } from './utils/AppConfig';
